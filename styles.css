@@ -569,4 +569,11 @@ footer {
   header h1 {
     font-size: 1.3rem;
   }
+  /* Asegurar que el contenido se vea en móvil */
+  .content {
+    padding: 1rem;
+  }
+  .dept-info {
+    padding: 1rem;
+  }
 }

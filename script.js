@@ -145,4 +145,17 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
+  // ▼▼▼ Asegurar que el contenido sea visible en móviles después de cerrar el menú ▼▼▼
+  document.querySelectorAll('nav.grid-deptos a').forEach(link => {
+    link.addEventListener('click', function () {
+      setTimeout(() => {
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 300);
+    });
+  });
+
 });
