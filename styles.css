@@ -1,15 +1,13 @@
 /* Reset mínimo */
-* {
+body, h1, h2, p, ul, li {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
 body {
   font-family: system-ui, sans-serif;
   background: #f0f2f5;
   color: #222;
-  line-height: 1.6;
 }
 
 /* Skip link */
@@ -37,55 +35,24 @@ header {
   padding: 1rem;
   text-align: center;
   z-index: 100;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 header h1 {
   margin-bottom: 0.5rem;
-  font-size: 1.5rem;
 }
 header nav ul {
   display: flex;
   justify-content: center;
   list-style: none;
   gap: 1.5rem;
-  flex-wrap: wrap;
 }
 header nav a {
   color: white;
   text-decoration: none;
   font-weight: bold;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
 }
 header nav a:hover,
 header nav a:focus {
-  background: rgba(255,255,255,0.1);
   text-decoration: underline;
-}
-
-/* Botón de comentario en el menú */
-.btn-comentario {
-  background: #ffd54f;
-  color: #5d4037;
-  border: none;
-  border-radius: 24px;
-  padding: 0.5rem 1rem;
-  font-weight: bold;
-  font-size: 0.9rem;
-  cursor: pointer;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s ease;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.btn-comentario:hover,
-.btn-comentario:focus {
-  background: #ffb300;
-  transform: scale(1.05);
-  outline: 2px solid #ff6f00;
-  outline-offset: 2px;
 }
 
 /* Layout principal */
@@ -113,7 +80,6 @@ nav.grid-deptos a {
   border-radius: 6px;
   text-align: center;
   font-weight: bold;
-  transition: background 0.3s ease;
 }
 nav.grid-deptos a:hover,
 nav.grid-deptos a:focus {
@@ -128,7 +94,6 @@ nav.grid-deptos a:focus {
   border-radius: 8px;
   min-height: 300px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  overflow-x: hidden;
 }
 
 /* Ocultar todos los departamentos */
@@ -156,9 +121,6 @@ body:not(:has(:target)) #la-paz {
   flex-wrap: wrap;
   border-radius: 8px;
   max-width: 70%;
-  background: #f9f9f9;
-  padding: 1rem;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
 
 /* Estilos para las imágenes individuales dentro de un contenedor .centrar-img */
@@ -169,13 +131,7 @@ body:not(:has(:target)) #la-paz {
   object-fit: cover;
   width: auto;
   border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  transition: transform 0.3s ease;
-}
-
-.centrar-img img:hover {
-  transform: scale(1.03);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 /* Media query para ajustar el tamaño de las imágenes individuales en pantallas muy pequeñas */
@@ -280,8 +236,35 @@ body:not(:has(:target)) #la-paz {
   background-color: #004d40;
 }
 
-/* ======== NUEVO: Menú hamburguesa ======== */
+/* ======== NUEVO: Botón de comentario y menú hamburguesa ======== */
 
+/* Botón de comentario */
+.btn-comentario {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: #ffd54f;
+  color: #5d4037;
+  border: none;
+  border-radius: 24px;
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+  font-size: 0.9rem;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  z-index: 101;
+  transition: all 0.3s ease;
+}
+
+.btn-comentario:hover,
+.btn-comentario:focus {
+  background: #ffb300;
+  transform: scale(1.05);
+  outline: 2px solid #ff6f00;
+  outline-offset: 2px;
+}
+
+/* Menú hamburguesa */
 .hamburger {
   display: none;
   flex-direction: column;
@@ -303,6 +286,7 @@ body:not(:has(:target)) #la-paz {
   transition: 0.3s;
 }
 
+/* Responsive para móviles */
 @media (max-width: 768px) {
   .hamburger {
     display: flex;
@@ -355,225 +339,5 @@ body:not(:has(:target)) #la-paz {
 
   header h1 {
     font-size: 1.5rem;
-  }
-}
-
-/* ======== NUEVO: Modal de comentario ======== */
-
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 1000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0,0,0,0.5);
-  justify-content: center;
-  align-items: center;
-  padding: 1rem;
-}
-
-.modal-content {
-  background: white;
-  padding: 2rem;
-  border-radius: 12px;
-  width: 90%;
-  max-width: 500px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.2);
-  animation: fadeIn 0.3s ease-out;
-  max-height: 90vh;
-  overflow-y: auto;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.modal-content h3 {
-  margin-top: 0;
-  color: #004d40;
-  border-bottom: 2px solid #00796b;
-  padding-bottom: 0.5rem;
-}
-
-.modal-content label {
-  display: block;
-  margin: 0.5rem 0 0.2rem;
-  font-weight: bold;
-}
-
-.modal-content input,
-.modal-content textarea {
-  width: 100%;
-  padding: 0.5rem;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 1rem;
-  margin-bottom: 1rem;
-}
-
-.modal-content button {
-  background: #00796b;
-  color: white;
-  border: none;
-  padding: 0.8rem 1.2rem;
-  border-radius: 6px;
-  font-weight: bold;
-  cursor: pointer;
-  width: 100%;
-}
-
-.modal-content button:hover {
-  background: #004d40;
-}
-
-.close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
-  transform: scale(1.1);
-}
-
-/* ======== NUEVO: Sección de comentarios ======== */
-
-#comentarios {
-  background: #f9f9f9;
-  border-radius: 8px;
-  padding: 2rem;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  margin-top: 2rem;
-}
-
-#comentarios h2 {
-  color: #004d40;
-  margin-bottom: 1rem;
-  text-align: center;
-}
-
-.comentario-item {
-  background: white;
-  padding: 1rem;
-  border-radius: 8px;
-  margin-bottom: 1rem;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-  border-left: 4px solid #00796b;
-}
-
-.comentario-item .nombre {
-  font-weight: bold;
-  color: #004d40;
-  margin-bottom: 0.5rem;
-}
-
-.comentario-item .fecha {
-  font-size: 0.8rem;
-  color: #777;
-  margin-bottom: 0.5rem;
-}
-
-.comentario-item .texto {
-  line-height: 1.5;
-}
-
-.sin-comentarios {
-  text-align: center;
-  color: #777;
-  font-style: italic;
-  padding: 2rem;
-}
-
-/* ======== NUEVO: Mejoras visuales generales ======== */
-
-/* Animación suave al cargar secciones */
-.dept-info {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
-}
-
-.dept-info:target {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Efecto hover en secciones */
-.dept-info:hover {
-  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
-}
-
-/* Estilo para párrafos */
-article p {
-  margin: 0.5rem 0;
-  line-height: 1.6;
-}
-
-/* Colores suaves para encabezados */
-h2 {
-  color: #004d40;
-  margin-bottom: 1rem;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  position: relative;
-  padding-bottom: 0.5rem;
-}
-
-h2::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 50px;
-  height: 3px;
-  background: #00796b;
-  border-radius: 3px;
-}
-
-/* Footer */
-footer {
-  text-align: center;
-  padding: 1rem;
-  background: #004d40;
-  color: white;
-  position: relative;
-  width: 100%;
-  margin-top: 2rem;
-  box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  main {
-    flex-direction: column;
-  }
-  nav.grid-deptos {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  .centrar-img {
-    max-width: 90%;
-  }
-  .modal-content {
-    width: 95%;
-    padding: 1rem;
-  }
-  header h1 {
-    font-size: 1.3rem;
-  }
-  /* Asegurar que el contenido se vea en móvil */
-  .content {
-    padding: 1rem;
-  }
-  .dept-info {
-    padding: 1rem;
   }
 }
